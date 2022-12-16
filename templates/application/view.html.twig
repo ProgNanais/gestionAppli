@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home !{% endblock %}
+
+{% block body %}
+
+    <h2 class="text-center">{{ application.appName }}</h2>
+    <article>
+        <div class="metadata">Créée le : {{ application.appDateCreated | date('d/m/Y') }}</div>
+        <div class="metadata">{{ application.appVersion }}</div>
+        <div class="content">
+            <p>{{ application.appDescription }}</p>
+            <div class="metadate">{{ application.appState }}</div>
+            <hr>
+            <a href="{{ path('home_app') }}" class="btn btn-primary"><i class="bi bi-arrow-left-circle" style="margin-right: 0.4rem;"></i> Retour</a>
+        </div>
+        <hr>
+
+{% endblock %}

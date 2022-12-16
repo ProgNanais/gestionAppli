@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formulaire{% endblock %}
+
+{% form_theme formApplication 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+
+    {{  form_start(formApplication)}}
+        {{ form_row(formApplication.appName, {'label': "Titre de l'application"}) }}
+        {{ form_row(formApplication.appDescription, {'label': "Description de l'application"}) }}
+        {{ form_row(formApplication.appVersion, {'label': "Techno utilisées"}) }}
+        {{ form_row(formApplication.appState, {'label': "Etat de l'appli"}) }}
+        {{ form_row(formApplication.appDateCreated, {'label': "Date de création"}) }}
+        <hr>
+        <div class="text-end">
+            {% if editMode %}
+                <button type="submit" class="btn btn-secondary">Enregistrer les modifications</button>
+            {% else %}
+                <button type="submit" class="btn btn-success">Ajouter l'application</button>
+            {% endif %}
+        </div>
+        <a href="{{ path('home_app') }}" class="btn btn-primary"><i class="bi bi-arrow-left-circle" style="margin-right: 0.4rem;"></i> Retour</a>
+        <hr>
+    {{ form_end(formApplication) }}
+
+{% endblock %}

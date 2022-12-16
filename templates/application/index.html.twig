@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index !{% endblock %}
+
+{% block body %}
+    <section class="container">
+    {% for application in applications %}
+        <article>
+            <h2>{{application.appName}}</h2>
+            <div class="metadata">Créée le : {{ application.appDateCreated | date('d/m/Y')}}</div>
+            <div class="metadata">{{ application.appVersion }}</div>
+            <div class="content">
+                <p>{{ application.appDescription }}</p>
+                <div class="metadate">{{ application.appState }}</div>
+                <div class="text-end">
+                    <a href="{{ path('form_app_edit', {'id': application.id}) }}" class="btn btn-success">modifier <i class="bi bi-arrow-right-circle" style="margin-left: 0.4rem;"></i></a>
+                    <a href="{{ path('view_app', {'id': application.id}) }}" class="btn btn-primary">Voir <i class="bi bi-arrow-right-circle" style="margin-left: 0.4rem;"></i></a>
+                </div>
+            </div>
+        </article>
+        <hr>
+    {% endfor %}
+    </section>
+{% endblock %}
